@@ -854,7 +854,10 @@
               }
             }
 
-            if (!(neighbours === 0 || neighbours === 1 || neighbours > 3)) {
+            if (x < 0 || y < 0 || x > GOL.columns || y > GOL.rows) {
+              this.redrawList.push([x, y, 0]); // Kill cell
+            }
+            else if (!(neighbours === 0 || neighbours === 1 || neighbours > 3)) {
               this.addCell(x, y, newState);
               alive++;
               this.redrawList.push([x, y, 2]); // Keep alive
