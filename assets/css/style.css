@@ -114,8 +114,8 @@ canvas {
   border-top: 2px solid #AAAAAA;
   border-left: 2px solid #AAAAAA;
   background: #FFFFFF;
-  font-size: 24px;
-  line-height: 26px;
+  font-size: 15px;
+  line-height: 15px;
 }
 
 .box input:hover {
