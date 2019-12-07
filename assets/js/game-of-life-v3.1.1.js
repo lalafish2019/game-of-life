@@ -99,7 +99,7 @@
       schemes : [
       // { columns : 100, rows : 48, cellSize : 8 },
       {
-        columns : 30,
+        columns : 45,
         rows : 30,
         cellSize : 10
       },
