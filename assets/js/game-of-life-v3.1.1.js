@@ -29,6 +29,9 @@
     waitTime: 0,
     generation : 0,
 
+    birth: 0,
+    death: 0,
+
     running : false,
     autoplay : false,
 
@@ -245,10 +248,14 @@
      */
     prepare : function() {
       this.generation = this.times.algorithm = this.times.gui = 0;
+      this.birth = 0;
+      this.death = 0;
       this.mouseDown = this.clear.schedule = false;
 
       this.element.generation.innerHTML = '0';
       this.element.livecells.innerHTML = '0';
+      this.element.birth.innerHTML = '0';
+      this.element.death.innerHTML = '0';
       this.element.steptime.innerHTML = '0 / 0 (0 / 0)';
 
       this.canvas.clearWorld(); // Reset GUI
@@ -269,6 +276,8 @@
       this.element.generation = document.getElementById('generation');
       this.element.steptime = document.getElementById('steptime');
       this.element.livecells = document.getElementById('livecells');
+      this.element.birth = document.getElementById('birth');
+      this.element.death = document.getElementById('death');
       this.element.messages.layout = document.getElementById('layoutMessages');
       this.element.hint = document.getElementById('hint');
     },
@@ -309,6 +318,8 @@
     nextStep : function() {
       var i, x, y, r, liveCellNumber, algorithmTime, guiTime;
 
+      var actualStateBefore = JSON.parse(JSON.stringify(GOL.listLife.actualState));
+
       // Algorithm run
 
       algorithmTime = (new Date());
@@ -317,6 +328,11 @@
 
       algorithmTime = (new Date()) - algorithmTime;
 
+      var actualStateAfter = JSON.parse(JSON.stringify(GOL.listLife.actualState));
+
+      var birthDeathReportResult = GOLReports.birthDeathReport(actualStateBefore, actualStateAfter);
+      GOL.birth += birthDeathReportResult.birth;
+      GOL.death += birthDeathReportResult.death;
 
       // Canvas run
 
@@ -361,6 +377,8 @@
       GOL.generation++;
       GOL.element.generation.innerHTML = GOL.generation;
       GOL.element.livecells.innerHTML = liveCellNumber;
+      GOL.element.birth.innerHTML = GOL.birth;
+      GOL.element.death.innerHTML = GOL.death;
 
       r = 1.0/GOL.generation;
       GOL.times.algorithm = (GOL.times.algorithm * (1 - r)) + (algorithmTime * r);

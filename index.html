@@ -4,6 +4,7 @@
     <script src="assets/js/json-sans-eval.js"></script>
     <script src="assets/js/css-browser-selector.js"></script>
     <script src="assets/js/stats.min.js"></script>
+    <script src="assets/js/game-of-life-reports-v1.0.0.js"></script>
     <script src="assets/js/game-of-life-v3.1.1.js"></script>
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
@@ -19,7 +20,11 @@
       <div class="cl">&nbsp;</div>
       <div class="box">
         <div class="subtitle">Credit: https://github.com/pmav/game-of-life</div>
-        <p class="info"><abbr title="Current Generation">Generation</abbr>: <span id="generation"></span> | <abbr title="Number of live cells">Live cells</abbr>: <span id="livecells"></span> | <abbr title="Execution times: Algorithm / Canvas (Algorithm / Canvas Averages)">Step time</abbr>: <span id="steptime"></span> ms </p>
+        <p class="info"><abbr title="Current Generation">Generation</abbr>: <span id="generation"></span> | <abbr title="Number of live cells">Live cells</abbr>: <span id="livecells"></span>
+           | <abbr title="Birth / Death">Birth / Death</abbr>: <span id="birth"></span>/<span id="death"></span> 
+
+           <span id="steptime" style="display:none"></span>
+        </p>
 
         <span id="hint">Hint: hit the <strong>Run</strong> button!</span>
       </div>
