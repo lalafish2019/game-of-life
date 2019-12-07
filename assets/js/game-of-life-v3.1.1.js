@@ -293,6 +293,8 @@
       this.helpers.registerEvent(document.getElementById('buttonTrail'), 'click', this.handlers.buttons.trail, false);
       this.helpers.registerEvent(document.getElementById('buttonGrid'), 'click', this.handlers.buttons.grid, false);
       this.helpers.registerEvent(document.getElementById('buttonColors'), 'click', this.handlers.buttons.colors, false);
+      
+      this.helpers.registerEvent(document.getElementById('buttonRandom'), 'click', this.handlers.buttons.random, false);
 
       this.helpers.registerEvent(document.getElementById('inputWaitTime'), 'keyup', this.handlers.inputs.waitTime, false);
 
@@ -562,6 +564,10 @@
             document.getElementById('exportTinyUrlLink').href = 'http://tinyurl.com/api-create.php?url='+ url + params;
             document.getElementById('exportUrl').style.display = 'inline';
           }
+        },
+
+        random: function() {
+          location = '?autoplay=0&trail=0&grid=1&colors=1&zoom=1&s=random';
         }
 
       },
