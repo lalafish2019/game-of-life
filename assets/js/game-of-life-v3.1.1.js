@@ -18,7 +18,7 @@
   stats.domElement.style.zIndex = '-999999';
 
   document.addEventListener("DOMContentLoaded", function() {
-    document.body.appendChild( stats.domElement );
+    //document.body.appendChild( stats.domElement );
   });
 
   var GOL = {
@@ -58,7 +58,7 @@
     },
 
     // Initial state
-    initialState : '[{"39":[110]},{"40":[112]},{"41":[109,110,113,114,115]}]',
+    initialState : '[]',
 
     // Trail state
     trail : {
@@ -99,9 +99,9 @@
       schemes : [
       // { columns : 100, rows : 48, cellSize : 8 },
       {
-        columns : 180,
-        rows : 86,
-        cellSize : 4
+        columns : 30,
+        rows : 30,
+        cellSize : 10
       },
 
       {
@@ -304,6 +304,11 @@
       this.helpers.registerEvent(document.getElementById('buttonTrail'), 'click', this.handlers.buttons.trail, false);
       this.helpers.registerEvent(document.getElementById('buttonGrid'), 'click', this.handlers.buttons.grid, false);
       this.helpers.registerEvent(document.getElementById('buttonColors'), 'click', this.handlers.buttons.colors, false);
+
+      this.helpers.registerEvent(document.getElementById('inputWaitTime'), 'keyup', this.handlers.inputs.waitTime, false);
+
+      var changeEvent = new Event('keyup');
+      document.getElementById('inputWaitTime').dispatchEvent(changeEvent);
     },
 
 
@@ -570,6 +575,13 @@
           }
         }
 
+      },
+
+      inputs: {
+        waitTime: function() {
+          var waitTime = +this.value;
+          GOL.waitTime = waitTime;
+        }
       }
 
     },
